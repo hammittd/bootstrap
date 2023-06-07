@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+echo 'Updating software with softwareupdate --install'
+softwareupdate --install
+
 brew bundle --file ./.Brewfile
 
 cat <<-EOF > ~/.zshrc
