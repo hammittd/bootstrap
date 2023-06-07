@@ -19,7 +19,9 @@ EOF
 
 ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
 
-/usr/local/opt/fzf/install
+if [ ! -d ~/.fzf.zsh ]; then
+  /usr/local/opt/fzf/install
+fi
 
 DOOMDIR=~/.config/emacs
 if [ ! -d "$DOOMDIR" ]; then
