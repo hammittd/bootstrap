@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-echo 'Updating software with softwareupdate --install'
-softwareupdate --install
+echo 'Updating software with softwareupdate --install --recommended'
+softwareupdate --install --recommended
 
 if ! command -v brew &> /dev/null
 then
@@ -21,7 +21,7 @@ ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
 DOOMDIR=~/.config/emacs
 if [ ! -d "$DOOMDIR" ]; then
 	git clone --depth 1 https://github.com/doomemacs/doomemacs "$DOOMDIR"
-    "$DOOMDIR"/bin/doom install
+  "$DOOMDIR"/bin/doom install
 else
   "$DOOMDIR"/bin/doom upgrade
 fi
