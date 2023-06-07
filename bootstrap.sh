@@ -16,7 +16,10 @@ brew bundle --file ./.Brewfile
 cat <<-EOF > ~/.zshrc
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 EOF
+
 ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
+
+/usr/local/opt/fzf/install
 
 DOOMDIR=~/.config/emacs
 if [ ! -d "$DOOMDIR" ]; then
