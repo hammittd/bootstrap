@@ -2,6 +2,15 @@
 echo 'Updating software with softwareupdate --install'
 softwareupdate --install
 
+if ! command -v brew &> /dev/null
+then
+    /bin/bash -c \
+        "$(curl -fsSL \
+        https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+    echo 'homebrew already installed. Running brew bundle...'
+fi
+
 brew bundle --file ./.Brewfile
 
 cat <<-EOF > ~/.zshrc
