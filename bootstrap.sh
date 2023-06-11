@@ -53,3 +53,13 @@ ZSHRC="$HOME/.zshrc"
 defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
 # Setting key repeat to 1 (15ms)
 defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+
+# Privacy: don’t send search queries to Apple
+defaults write com.apple.Safari UniversalSearchEnabled -bool false
+defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+# Set Safari’s home page to `about:blank` for faster loading
+defaults write com.apple.Safari HomePage -string "about:blank"
+# Enable the Develop menu and the Web Inspector in Safari
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
