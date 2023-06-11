@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
-echo 'Updating software with softwareupdate --install --recommended'
-softwareupdate --install --recommended
+if [ "$1" == "upgrade" ]; then
+  SHOULD_UPGRADE=true
+else
+  SHOULD_UPGRADE=false
+fi
+
+if [ "$SHOULD_UPGRADE" = true ]; then
+  softwareupdate --install --recommended
+else
+  echo 'Not running softwareupdate --install --recommended'
+fi
 
 if ! command -v brew &> /dev/null
 then
