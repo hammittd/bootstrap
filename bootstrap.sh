@@ -36,9 +36,9 @@ DOOMDIR=~/.config/emacs
 if [ ! -d "$DOOMDIR" ]; then
 	git clone --depth 1 https://github.com/doomemacs/doomemacs "$DOOMDIR"
   "$DOOMDIR"/bin/doom install
-else
-  "$DOOMDIR"/bin/doom upgrade
 fi
+
+[ "$SHOULD_UPGRADE" = true ] && "$DOOMDIR"/bin/doom upgrade
 
 if [ -d ~/.emacs.d ]; then
   rm -rf ~/.emacs.d
