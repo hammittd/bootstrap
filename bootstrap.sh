@@ -26,7 +26,7 @@ cat <<-EOF > ~/.zshrc
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 EOF
 
-ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
+# ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
 
 if [ ! -d ~/.fzf.zsh ]; then
   /usr/local/opt/fzf/install
