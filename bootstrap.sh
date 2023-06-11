@@ -43,3 +43,9 @@ fi
 if [ -d ~/.emacs.d ]; then
   rm -rf ~/.emacs.d
 fi
+
+BELL_SETTING="unsetopt BEEP"
+ZSHRC="$HOME/.zshrc"
+
+[ -z $(grep "$BELL_SETTING" "$ZSHRC") ] && echo "$BELL_SETTING" >> "$ZSHRC"
+
