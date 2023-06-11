@@ -28,7 +28,7 @@ EOF
 
 # ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
 
-if [ ! -d ~/.fzf.zsh ]; then
+if [ ! -f ~/.fzf.zsh ]; then
   /usr/local/opt/fzf/install
 fi
 
