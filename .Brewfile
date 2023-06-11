@@ -16,9 +16,9 @@ brew "rsync"
 brew "tmux"
 brew "wget"
 brew "xz"
-brew "emacs-mac", args: ["with-modules"]
 
-cask "rectangle"
+cask "emacs-mac"
+# cask "rectangle"
 cask "transmission"
 cask "vlc"
 

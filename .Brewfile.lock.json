@@ -569,7 +569,7 @@
         "revision": "622c7bf0b236e1e1b61a858a4c179e5c446a81a0"
       },
       "homebrew/cask": {
-        "revision": "4d014fe2bca8ab6f307dd492cb902628bf672666"
+        "revision": "45eaa777b0d52fbae0e535b70e43812221e2d422"
       }
     },
     "cask": {
@@ -599,12 +599,21 @@
             "appdir": "/Applications"
           }
         }
+      },
+      "emacs-mac": {
+        "version": "emacs-28.2-mac-9.1",
+        "options": {
+          "full_name": "emacs-mac",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
       }
     },
     "mas": {
       "Xcode": {
         "id": "497799835",
-        "version": "14.2"
+        "version": "13.2.1"
       },
       "Magnet": {
         "id": "441258766",
@@ -621,6 +630,14 @@
         "CLT": "14.2.0.0.1.1668646533",
         "Xcode": "14.2",
         "macOS": "12.6.5"
+      },
+      "big_sur": {
+        "HOMEBREW_VERSION": "4.0.21",
+        "HOMEBREW_PREFIX": "/usr/local",
+        "Homebrew/homebrew-core": "api",
+        "CLT": "13.2.0.0.1.1638488800",
+        "Xcode": "13.2.1",
+        "macOS": "11.7.7"
       }
     }
   }
