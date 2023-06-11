@@ -7,8 +7,6 @@ fi
 
 if [ "$SHOULD_UPGRADE" = true ]; then
   softwareupdate --install --recommended
-else
-  echo 'Not running softwareupdate --install --recommended'
 fi
 
 if ! command -v brew &> /dev/null
@@ -16,8 +14,6 @@ then
     /bin/bash -c \
         "$(curl -fsSL \
         https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-else
-    echo 'homebrew already installed. Running brew bundle...'
 fi
 
 brew bundle --file ./.Brewfile
