@@ -18,13 +18,13 @@ brew "wget"
 brew "xz"
 brew "emacs-mac", args: ["with-modules"]
 
-cask "rectangle"
 cask "transmission"
 cask "vlc"
+cask "visual-studio-code"
 
 # get installed with
 # `brew bundle dump --file=- | grep ^mas`
 # search with
 # `mas search [app-name]`
 mas "Xcode", id: 497799835
-mas "Magnet", id: 441258766  
+mas "Magnet", id: 441258766
