@@ -34,3 +34,9 @@ fi
 if [ -d ~/.emacs.d ]; then
   rm -rf ~/.emacs.d
 fi
+
+GIT_USER=$(git config user.name)
+if [ -z "$GIT_USER" ]; then
+  git config --global user.name "derek"
+  git config --global user.email "hammittd@icloud.com"
+fi
