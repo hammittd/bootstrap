@@ -13,13 +13,14 @@ fi
 
 brew bundle --file ./.Brewfile
 
+if [ ! -d ~/.fzf.zsh ]; then
+  /usr/local/opt/fzf/install --all
+fi
+
 cat <<-EOF > ~/.zshrc
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 EOF
 
-if [ ! -d ~/.fzf.zsh ]; then
-  /usr/local/opt/fzf/install
-fi
 
 GIT_USER=$(git config user.name)
 if [ -z "$GIT_USER" ]; then
