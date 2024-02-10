@@ -13,6 +13,7 @@ brew "rsync"
 brew "shellcheck"
 brew "tmux"
 brew "wget"
+brew "rbenv"
 
 cask "transmission", args: { appdir: "/Applications" }
 cask "visual-studio-code", args: { appdir: "/Applications" }
