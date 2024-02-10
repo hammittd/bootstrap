@@ -35,6 +35,7 @@ fi
 if confirm_step "Would you like to configure git?"; then
   git_config_file="$HOME/.gitconfig"
   backup_date=$(date +%Y%m%d%H%M%S)
+  gitignore_global="$HOME/.gitignore_global"
 
   read -rp "Enter your git username: " git_username
   read -rp "Enter your git email: " git_email
@@ -69,6 +70,21 @@ if confirm_step "Would you like to configure git?"; then
   echo "git config --global push.default current"
   echo "git config --global credential.helper osxkeychain"
   echo "git config --global pull.rebase true"
+  echo "git config --global core.excludesfile $gitignore_global"
+  echo "And add the following files ot the globa gitignore file:"
+  echo ".DS_Store"
+  echo "*.swp"
+  echo "*.swo"
+  echo ".vscode/"
+  echo ".idea/"
+  echo "*.sublime-workspace"
+  echo "node_modules/"
+  echo "/build/"
+  echo "/dist/"
+  echo "target/"
+  echo "*.log"
+  echo "*.tmp"
+  echo ".env"
 
   if confirm_step "Would you like to apply these settings?"; then
     git config --global init.defaultBranch main
@@ -82,6 +98,29 @@ if confirm_step "Would you like to configure git?"; then
     git config --global push.default current
     git config --global credential.helper osxkeychain
     git config --global pull.rebase true
+    git config --global core.excludesfile "$gitignore_global"
+    echo "# Operating System specific ignores" >> "$gitignore_global"
+    echo ".DS_Store" >> "$gitignore_global"
+    echo "*.swp" >> "$gitignore_global"
+    echo "*.swo" >> "$gitignore_global"
+    echo "# Editor and IDE specific ignores" >> "$gitignore_global"
+    echo ".vscode/" >> "$gitignore_global"
+    echo ".idea/" >> "$gitignore_global"
+    echo "*.sublime-workspace" >> "$gitignore_global"
+    echo "# Language and Framework specific ignores" >> "$gitignore_global"
+    echo "__pycache__/" >> "$gitignore_global"
+    echo "*.py[cod]" >> "$gitignore_global"
+    echo "node_modules/" >> "$gitignore_global"
+    echo "*.class" >> "$gitignore_global"
+    echo "# Build and Dependency folders" >> "$gitignore_global"
+    echo "/build/" >> "$gitignore_global"
+    echo "/dist/" >> "$gitignore_global"
+    echo "target/" >> "$gitignore_global"
+    echo "# Temporary files" >> "$gitignore_global"
+    echo "*.log" >> "$gitignore_global"
+    echo "*.tmp" >> "$gitignore_global"
+    echo "# Environment files" >> "$gitignore_global"
+    echo ".env" >> "$gitignore_global"
   fi
 
   echo "Do you want to sign your Git commits? Choose an option:"
