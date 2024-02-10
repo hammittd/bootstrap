@@ -36,14 +36,15 @@ else
   fi
 fi
 
-brew bundle --file ./.Brewfile
 
+echo ""
 if confirm_step "Would you like to install fzf"; then
   if [ ! -d ~/.fzf.zsh ]; then
     /usr/local/opt/fzf/install --all
   fi
 fi
 
+echo ""
 if confirm_step "Would you like to configure git?"; then
   git_config_file="$HOME/.gitconfig"
   backup_date=$(date +%Y%m%d%H%M%S)
@@ -70,6 +71,7 @@ if confirm_step "Would you like to configure git?"; then
     git config --global user.email "$git_email"
   fi
 
+  echo ""
   echo "The following git configuration will be applied:"
   echo "git config --global init.defaultBranch main"
   echo "git config --global core.editor "code --wait""
@@ -98,6 +100,7 @@ if confirm_step "Would you like to configure git?"; then
   echo "*.tmp"
   echo ".env"
 
+  echo ""
   if confirm_step "Would you like to apply these settings?"; then
     git config --global init.defaultBranch main
     git config --global core.editor "code --wait"
@@ -135,6 +138,7 @@ if confirm_step "Would you like to configure git?"; then
     echo ".env" >> "$gitignore_global"
   fi
 
+  echo ""
   echo "Do you want to sign your Git commits? Choose an option:"
   echo "1) GPG"
   echo "2) SSH"
