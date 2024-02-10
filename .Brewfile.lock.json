@@ -802,55 +802,43 @@
       "transmission": {
         "version": "4.0.5",
         "options": {
-          "args": {
-            "appdir": "/Applications"
-          },
           "full_name": "transmission"
         }
       },
       "visual-studio-code": {
         "version": "1.86.1",
         "options": {
-          "args": {
-            "appdir": "/Applications"
-          },
           "full_name": "visual-studio-code"
         }
       },
       "vlc": {
         "version": "3.0.20",
         "options": {
-          "args": {
-            "appdir": "/Applications"
-          },
           "full_name": "vlc"
         }
       },
       "docker": {
         "version": "4.27.2,137060",
         "options": {
-          "args": {
-            "appdir": "/Applications"
-          },
           "full_name": "docker"
         }
       },
       "mullvadvpn": {
         "version": "2023.6",
         "options": {
-          "args": {
-            "appdir": "/Applications"
-          },
           "full_name": "mullvadvpn"
         }
       },
       "little-snitch": {
         "version": "5.7.3",
         "options": {
-          "args": {
-            "appdir": "/Applications"
-          },
           "full_name": "little-snitch"
+        }
+      },
+      "postico": {
+        "version": "2.0.5,9661",
+        "options": {
+          "full_name": "postico"
         }
       }
     },
