@@ -14,16 +14,26 @@ confirm_step() {
 }
 
 if confirm_step "Would you like to check for available software updates with softwareupdate --install --recommended?"; then
-  echo 'Updating software with softwareupdate --install --recommended'
+  echo "Updating software with softwareupdate --install --recommended"
   softwareupdate --install --recommended
 fi
 
+echo ""
 if ! command -v brew &> /dev/null
 then
   /bin/bash -c \
     "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  if confirm_step "brew installed. Would you like to run brew bundle --file ./.Brewfile?"; then
+    brew bundle --file ./.Brewfile
+  fi
 else
-  echo 'homebrew already installed. Running brew bundle --file ./.Brewfile'
+  if confirm_step "homebrew already installed. Would you like to run brew bundle --file ./.Brewfile?"; then
+    brew bundle --file ./.Brewfile
+  fi
+  echo ""
+  if confirm_step "Update and upgrade installed packages?"; then
+    brew update && brew upgrade
+  fi
 fi
 
 brew bundle --file ./.Brewfile
