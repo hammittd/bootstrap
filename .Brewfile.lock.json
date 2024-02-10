@@ -843,6 +843,15 @@
           },
           "full_name": "mullvadvpn"
         }
+      },
+      "little-snitch": {
+        "version": "5.7.3",
+        "options": {
+          "args": {
+            "appdir": "/Applications"
+          },
+          "full_name": "little-snitch"
+        }
       }
     },
     "mas": {

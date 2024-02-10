@@ -18,11 +18,12 @@ brew "rbenv"
 brew "ruby-build"
 brew "postgresql@14"
 
-cask "transmission", args: { appdir: "/Applications" }
-cask "visual-studio-code", args: { appdir: "/Applications" }
-cask "vlc", args: { appdir: "/Applications" }
-cask "docker", args: { appdir: "/Applications" }
-cask "mullvadvpn", args: { appdir: "/Applications" }
+cask "transmission"
+cask "visual-studio-code"
+cask "vlc"
+cask "docker"
+cask "mullvadvpn"
+cask "little-snitch"
 
 # get installed with
 # `brew bundle dump --file=- | grep ^mas`
