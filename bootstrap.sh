@@ -2,7 +2,7 @@
 
 confirm_step() {
   while true; do
-    read -pr "$1 (Y/n) " yn
+    read -rp "$1 (Y/n) " yn
       case ${yn:-Y} in
         [Yy]* ) break;; # Treat empty input as 'yes' and break from the loop
         [Nn]* ) echo "Skipping step."; return 1;; # If no, return 1 to indicate to skip the step
@@ -26,8 +26,10 @@ fi
 
 brew bundle --file ./.Brewfile
 
-if [ ! -d ~/.fzf.zsh ]; then
-  /usr/local/opt/fzf/install --all
+if confirm_step "Would you like to install fzf"; then
+  if [ ! -d ~/.fzf.zsh ]; then
+    /usr/local/opt/fzf/install --all
+  fi
 fi
 
 GIT_USER=$(git config user.name)
