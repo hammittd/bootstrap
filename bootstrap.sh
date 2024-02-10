@@ -32,8 +32,19 @@ if confirm_step "Would you like to install fzf"; then
   fi
 fi
 
-GIT_USER=$(git config user.name)
-if [ -z "$GIT_USER" ]; then
-  git config --global user.name "derek"
-  git config --global user.email "hammittd@icloud.com"
-fi
+if confirm_step "Would you like to configure git?"; then
+  git_config_file="$HOME/.gitconfig"
+  backup_date=$(date +%Y%m%d%H%M%S)
+  if [ -f "$git_config_file" ]; then
+    echo "Existing git configuration found. Creating a backup..."
+    backup_file="${git_config_file}.backup.${backup_date}"
+    mv "$git_config_file" "$backup_file"
+    echo "Backup created at $backup_file"
+  fi
+
+  read -rp "Enter your git username: " git_username
+  read -rp "Enter your git email: " git_email
+  if [[ -n "$git_username" && "$git_email" ]]; then
+    git config --global user.name "$git_username"
+    git config --global user.email "$git_email"
+  fi
