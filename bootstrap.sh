@@ -177,3 +177,9 @@ if confirm_step "Would you like to configure git?"; then
       ;;
   esac
 fi
+
+zshrc_file="$HOME/.zshrc"
+
+if confirm_step "Add eval \"\$(rbenv init - zsh)\" to $zshrc_file?"; then
+  echo eval "$(rbenv init - zsh)" >> "$zshrc_file"
+fi
