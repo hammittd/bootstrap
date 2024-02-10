@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 confirm_step() {
   while true; do
     read -rp "$1 (Y/n) " yn
