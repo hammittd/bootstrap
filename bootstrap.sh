@@ -198,3 +198,8 @@ if confirm_step "Install ruby v$RUBY_VERSION and bundler?"; then
   rbenv global $RUBY_VERSION
   gem install bundler
 fi
+
+echo ""
+if confirm_step "Start postgresql service?"; then
+  brew services start postgresql
+fi

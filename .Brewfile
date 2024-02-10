@@ -1,4 +1,5 @@
 tap "homebrew/bundle"
+tap "homebrew/services"
 
 brew "coreutils"
 brew "fd"
@@ -15,7 +16,7 @@ brew "tmux"
 brew "wget"
 brew "rbenv"
 brew "ruby-build"
-brew "postgresql"
+brew "postgresql@14"
 
 cask "transmission", args: { appdir: "/Applications" }
 cask "visual-studio-code", args: { appdir: "/Applications" }
