@@ -15,6 +15,7 @@ brew "tmux"
 brew "wget"
 brew "rbenv"
 brew "ruby-build"
+brew "postgresql"
 
 cask "transmission", args: { appdir: "/Applications" }
 cask "visual-studio-code", args: { appdir: "/Applications" }
