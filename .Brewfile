@@ -21,6 +21,8 @@ brew "postgresql@14"
 cask "transmission", args: { appdir: "/Applications" }
 cask "visual-studio-code", args: { appdir: "/Applications" }
 cask "vlc", args: { appdir: "/Applications" }
+cask "docker", args: { appdir: "/Applications" }
+cask "mullvadvpn", args: { appdir: "/Applications" }
 
 # get installed with
 # `brew bundle dump --file=- | grep ^mas`

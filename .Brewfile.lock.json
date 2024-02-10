@@ -825,6 +825,24 @@
           },
           "full_name": "vlc"
         }
+      },
+      "docker": {
+        "version": "4.27.2,137060",
+        "options": {
+          "args": {
+            "appdir": "/Applications"
+          },
+          "full_name": "docker"
+        }
+      },
+      "mullvadvpn": {
+        "version": "2023.6",
+        "options": {
+          "args": {
+            "appdir": "/Applications"
+          },
+          "full_name": "mullvadvpn"
+        }
       }
     },
     "mas": {

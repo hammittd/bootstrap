@@ -203,3 +203,8 @@ echo ""
 if confirm_step "Start postgresql service?"; then
   brew services start postgresql
 fi
+
+echo ""
+if confirm_step "Open Docker Desktop and configure docker?"; then
+  open -a Docker
+fi
