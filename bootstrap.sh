@@ -2,6 +2,13 @@
 
 set -e
 
+GIT_CONFIG_FILE="$HOME/.gitconfig"
+GIT_IGNORE_GLOBAL="$HOME/.gitignore_global"
+ALLOWED_SIGNERS_FILE=~/.ssh/allowed_signers
+RUBY_VERSION="3.1.4"
+RBENV_INIT_LINE="rbenv()"
+ZSHRC="$HOME/.zshrc"
+
 confirm_step() {
   while true; do
     read -rp "$1 (Y/n) " yn
@@ -46,9 +53,7 @@ fi
 
 echo ""
 if confirm_step "Would you like to configure git?"; then
-  git_config_file="$HOME/.gitconfig"
   backup_date=$(date +%Y%m%d%H%M%S)
-  gitignore_global="$HOME/.gitignore_global"
 
   read -rp "Enter your git username: " git_username
   read -rp "Enter your git email: " git_email
@@ -58,10 +63,10 @@ if confirm_step "Would you like to configure git?"; then
     exit 1
   fi
 
-  if [ -f "$git_config_file" ]; then
+  if [ -f "$GIT_CONFIG_FILE" ]; then
     echo "Existing git configuration found. Creating a backup..."
-    backup_file="${git_config_file}.backup.${backup_date}"
-    mv "$git_config_file" "$backup_file"
+    backup_file="${GIT_CONFIG_FILE}.backup.${backup_date}"
+    mv "$GIT_CONFIG_FILE" "$backup_file"
     echo "Backup created at $backup_file"
   fi
 
@@ -84,7 +89,7 @@ if confirm_step "Would you like to configure git?"; then
   echo "git config --global push.default current"
   echo "git config --global credential.helper osxkeychain"
   echo "git config --global pull.rebase true"
-  echo "git config --global core.excludesfile $gitignore_global"
+  echo "git config --global core.excludesfile $GIT_IGNORE_GLOBAL"
   echo "And add the following files ot the globa gitignore file:"
   echo ".DS_Store"
   echo "*.swp"
@@ -113,29 +118,29 @@ if confirm_step "Would you like to configure git?"; then
     git config --global push.default current
     git config --global credential.helper osxkeychain
     git config --global pull.rebase true
-    git config --global core.excludesfile "$gitignore_global"
-    echo "# Operating System specific ignores" >> "$gitignore_global"
-    echo ".DS_Store" >> "$gitignore_global"
-    echo "*.swp" >> "$gitignore_global"
-    echo "*.swo" >> "$gitignore_global"
-    echo "# Editor and IDE specific ignores" >> "$gitignore_global"
-    echo ".vscode/" >> "$gitignore_global"
-    echo ".idea/" >> "$gitignore_global"
-    echo "*.sublime-workspace" >> "$gitignore_global"
-    echo "# Language and Framework specific ignores" >> "$gitignore_global"
-    echo "__pycache__/" >> "$gitignore_global"
-    echo "*.py[cod]" >> "$gitignore_global"
-    echo "node_modules/" >> "$gitignore_global"
-    echo "*.class" >> "$gitignore_global"
-    echo "# Build and Dependency folders" >> "$gitignore_global"
-    echo "/build/" >> "$gitignore_global"
-    echo "/dist/" >> "$gitignore_global"
-    echo "target/" >> "$gitignore_global"
-    echo "# Temporary files" >> "$gitignore_global"
-    echo "*.log" >> "$gitignore_global"
-    echo "*.tmp" >> "$gitignore_global"
-    echo "# Environment files" >> "$gitignore_global"
-    echo ".env" >> "$gitignore_global"
+    git config --global core.excludesfile "$GIT_IGNORE_GLOBAL"
+    echo "# Operating System specific ignores" >> "$GIT_IGNORE_GLOBAL"
+    echo ".DS_Store" >> "$GIT_IGNORE_GLOBAL"
+    echo "*.swp" >> "$GIT_IGNORE_GLOBAL"
+    echo "*.swo" >> "$GIT_IGNORE_GLOBAL"
+    echo "# Editor and IDE specific ignores" >> "$GIT_IGNORE_GLOBAL"
+    echo ".vscode/" >> "$GIT_IGNORE_GLOBAL"
+    echo ".idea/" >> "$GIT_IGNORE_GLOBAL"
+    echo "*.sublime-workspace" >> "$GIT_IGNORE_GLOBAL"
+    echo "# Language and Framework specific ignores" >> "$GIT_IGNORE_GLOBAL"
+    echo "__pycache__/" >> "$GIT_IGNORE_GLOBAL"
+    echo "*.py[cod]" >> "$GIT_IGNORE_GLOBAL"
+    echo "node_modules/" >> "$GIT_IGNORE_GLOBAL"
+    echo "*.class" >> "$GIT_IGNORE_GLOBAL"
+    echo "# Build and Dependency folders" >> "$GIT_IGNORE_GLOBAL"
+    echo "/build/" >> "$GIT_IGNORE_GLOBAL"
+    echo "/dist/" >> "$GIT_IGNORE_GLOBAL"
+    echo "target/" >> "$GIT_IGNORE_GLOBAL"
+    echo "# Temporary files" >> "$GIT_IGNORE_GLOBAL"
+    echo "*.log" >> "$GIT_IGNORE_GLOBAL"
+    echo "*.tmp" >> "$GIT_IGNORE_GLOBAL"
+    echo "# Environment files" >> "$GIT_IGNORE_GLOBAL"
+    echo ".env" >> "$GIT_IGNORE_GLOBAL"
   fi
 
   echo ""
@@ -163,10 +168,10 @@ if confirm_step "Would you like to configure git?"; then
       git config --global gpg.format ssh
       git config --global gpg.ssh.program "$ssh_program"
       git config --global commit.gpgsign true
-      allowed_signers_file=~/.ssh/allowed_signers
-      touch "$allowed_signers_file"
-      echo "$git_email $ssh_key_id" >> "$allowed_signers_file"
-      git config --global gpg.ssh.allowedSignersFile "$allowed_signers_file"
+      
+      touch "$ALLOWED_SIGNERS_FILE"
+      echo "$git_email $ssh_key_id" >> "$ALLOWED_SIGNERS_FILE"
+      git config --global gpg.ssh.allowedSignersFile "$ALLOWED_SIGNERS_FILE"
       echo "If you'd like others to be able to verify your signature, don't forget to update your SSH key's settings on GitHub, GitLab, etc."
       ;;
     3)
@@ -178,8 +183,18 @@ if confirm_step "Would you like to configure git?"; then
   esac
 fi
 
-zshrc_file="$HOME/.zshrc"
+echo ""
+if confirm_step "Add eval \"\$(rbenv init - zsh)\" to $ZSHRC?"; then
+  if ! grep -qF -- "$RBENV_INIT_LINE" "$ZSHRC"; then
+    echo eval "$(rbenv init - zsh)" >> "$ZSHRC"
+  else
+    echo "\$(rbenv init -zsh) already added to $ZSHRC."
+  fi
+fi
 
-if confirm_step "Add eval \"\$(rbenv init - zsh)\" to $zshrc_file?"; then
-  echo eval "$(rbenv init - zsh)" >> "$zshrc_file"
+echo ""
+if confirm_step "Install ruby v$RUBY_VERSION and bundler?"; then
+  rbenv install "$RUBY_VERSION"
+  rbenv global $RUBY_VERSION
+  gem install bundler
 fi
