@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 confirm_step() {
-    while true; do
+  while true; do
         read -p "$1 (Y/n) " yn
         case ${yn:-Y} in
             [Yy]* | "" ) break;; # Treat empty input as 'yes' and break from the loop
