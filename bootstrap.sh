@@ -35,6 +35,15 @@ fi
 if confirm_step "Would you like to configure git?"; then
   git_config_file="$HOME/.gitconfig"
   backup_date=$(date +%Y%m%d%H%M%S)
+
+  read -rp "Enter your git username: " git_username
+  read -rp "Enter your git email: " git_email
+
+  if [[ -z "$git_username" || -z "$git_email" ]]; then
+    echo "Git username and email are required. Exiting script."
+    exit 1
+  fi
+
   if [ -f "$git_config_file" ]; then
     echo "Existing git configuration found. Creating a backup..."
     backup_file="${git_config_file}.backup.${backup_date}"
@@ -42,9 +51,8 @@ if confirm_step "Would you like to configure git?"; then
     echo "Backup created at $backup_file"
   fi
 
-  read -rp "Enter your git username: " git_username
-  read -rp "Enter your git email: " git_email
   if [[ -n "$git_username" && "$git_email" ]]; then
+    echo "git username and email set $git_username $git_email"
     git config --global user.name "$git_username"
     git config --global user.email "$git_email"
   fi
@@ -100,6 +108,11 @@ if confirm_step "Would you like to configure git?"; then
       git config --global gpg.format ssh
       git config --global gpg.ssh.program "$ssh_program"
       git config --global commit.gpgsign true
+      allowed_signers_file=~/.ssh/allowed_signers
+      touch "$allowed_signers_file"
+      echo "$git_email $ssh_key_id" >> "$allowed_signers_file"
+      git config --global gpg.ssh.allowedSignersFile "$allowed_signers_file"
+      echo "If you'd like others to be able to verify your signature, don't forget to update your SSH key's settings on GitHub, GitLab, etc."
       ;;
     3)
       echo "Git commits will not be signed."
