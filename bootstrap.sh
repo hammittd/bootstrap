@@ -226,8 +226,17 @@ if confirm_step "Install nvm and the latest LTS version of NodeJS?"; then
 fi
 
 echo ""
-if confirm_step "Start postgresql service?"; then
-  brew services start postgresql
+pg_status=$(brew services list | grep postgresql | awk '{print $2}')
+
+if [ "$pg_status" != "started" ]; then
+    if confirm_step "Start PostgreSQL service?"; then
+        echo "Starting PostgreSQL service..."
+        brew services start postgresql
+    else
+        echo "Skipping PostgreSQL service start."
+    fi
+else
+    echo "PostgreSQL service is already running."
 fi
 
 echo ""
