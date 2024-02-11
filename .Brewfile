@@ -25,6 +25,7 @@ brew "htop"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 brew "watch"
+brew "tldr"
 
 cask "transmission"
 cask "visual-studio-code"
