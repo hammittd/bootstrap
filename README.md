@@ -6,7 +6,9 @@ Script to install tools and do some setup.
 Check the `.Brewfile` to see what's installed
 
 ## Get started
-Run `./bootstrap.sh` to get started.
+- `xcode-select --install`
+- `git clone` this repository
+- Run `./bootstrap.sh`
 
 ## Afterward
 ### postgres
