@@ -6,7 +6,6 @@
     "editor.fontFamily": "Berkeley Mono, monospace",
     "terminal.integrated.defaultProfile.osx": "zsh",
     "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.tabFocusMode": false,
     "workbench.colorTheme": "GitHub Dark",
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
