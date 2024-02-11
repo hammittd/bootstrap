@@ -10,6 +10,8 @@ RBENV_INIT_LINE="rbenv()"
 ZSHRC="$HOME/.zshrc"
 VSCODE_SETTINGS_PATH="$HOME/Library/Application Support/Code/User/settings.json"
 VS_CODE_SETTINGS_FILE="./vscode-settings.json"
+BERKELEY_MONO_TYPEFACES_DIR="./berkeley-mono-typeface"
+USER_FONTS_DIR="$HOME/Library/Fonts"
 
 confirm_step() {
   while true; do
@@ -211,6 +213,12 @@ fi
 echo ""
 if confirm_step "Open Docker Desktop and configure docker?"; then
   open -a Docker
+fi
+
+echo ""
+if confirm_step "Install Berkeley Mono Typefaces?"; then
+  cp "$BERKELEY_MONO_TYPEFACES_DIR"/*.ttf "$USER_FONTS_DIR"
+  cp "$BERKELEY_MONO_TYPEFACES_DIR"/*.otf "$USER_FONTS_DIR"
 fi
 
 echo ""
