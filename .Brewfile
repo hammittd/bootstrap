@@ -23,7 +23,6 @@ cask "visual-studio-code"
 cask "vlc"
 cask "docker"
 cask "mullvadvpn"
-cask "little-snitch"
 cask "postico"
 
 # get installed with
