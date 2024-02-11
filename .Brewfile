@@ -17,6 +17,8 @@ brew "wget"
 brew "rbenv"
 brew "ruby-build"
 brew "postgresql@14"
+brew "ffmpeg"
+brew "imagemagick"
 
 cask "transmission"
 cask "visual-studio-code"
