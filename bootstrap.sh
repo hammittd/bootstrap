@@ -9,7 +9,10 @@ RUBY_VERSION="3.1.4"
 RBENV_INIT_LINE="rbenv()"
 ZSHRC="$HOME/.zshrc"
 VSCODE_SETTINGS_PATH="$HOME/Library/Application Support/Code/User/settings.json"
-VS_CODE_SETTINGS_FILE="./vscode-settings.json"
+VSCODE_APPLICATION_PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
+VSCODE_SYMLINK_PATH="/usr/local/bin/code"
+VSCODE_SETTINGS_FILE="./vscode-settings.json"
+VSCODE_EXTENSIONS_FILE="./vscode-extensions.txt"
 BERKELEY_MONO_TYPEFACES_DIR="./berkeley-mono-typeface"
 USER_FONTS_DIR="$HOME/Library/Fonts"
 
@@ -258,8 +261,22 @@ if confirm_step "Install Berkeley Mono Typefaces?"; then
 fi
 
 echo ""
-if confirm_step "Copy vscode-settings.json to $VSCODE_SETTINGS_PATH?"; then
-  cp $VS_CODE_SETTINGS_FILE "$VSCODE_SETTINGS_PATH"
+if [ -f "$VSCODE_APPLICATION_PATH" ]; then
+  echo "vs code is installed."
+  if [ -L "$VSCODE_SYMLINK_PATH" ] || [ -e "$VSCODE_SYMLINK_PATH" ]; then
+    echo "vs code symlink or file $VSCODE_SYMLINK_PATH already exists. No action taken."
+  else
+    ln -s "$VSCODE_APPLICATION_PATH" "$VSCODE_SYMLINK_PATH"
+    echo "Symlink created: $VSCODE_SYMLINK_PATH -> $VSCODE_APPLICATION_PATH"
+  fi
+  if confirm_step "Configure vs code with vscode-settings.json and vscode-extensions.txt?"; then
+    cp $VSCODE_SETTINGS_FILE "$VSCODE_SETTINGS_PATH"
+    while IFS= read -r line; do
+      code --force --install-extension "$line"
+    done < "$VSCODE_EXTENSIONS_FILE"
+  fi
+else
+  echo "vs code is not installed."
 fi
 
 echo ""
