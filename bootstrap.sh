@@ -14,14 +14,16 @@ BERKELEY_MONO_TYPEFACES_DIR="./berkeley-mono-typeface"
 USER_FONTS_DIR="$HOME/Library/Fonts"
 
 confirm_step() {
-  while true; do
-    read -rp "$1 (Y/n) " yn
-      case ${yn:-Y} in
-        [Yy]* ) break;; # Treat empty input as 'yes' and break from the loop
-        [Nn]* ) echo "Skipping step."; return 1;; # If no, return 1 to indicate to skip the step
-        * ) echo "Please answer yes (Y) or no (n).";;
-      esac
-  done
+  read -rp "$1 (Y/n): " response
+  case "$response" in
+    [yY][eE][sS]|[yY]|"")
+      return 0
+      ;;
+    *)
+      echo "Skipping this step."
+      return 1
+      ;;
+  esac
 }
 
 if confirm_step "Would you like to check for available software updates with softwareupdate --install --recommended?"; then
