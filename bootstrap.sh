@@ -262,12 +262,23 @@ fi
 
 echo ""
 if confirm_step "Enable ZSH autosuggestions and syntax highlighting?"; then
-  if ! grep -q "zsh-autosuggestions" ~/.zshrc; then
+  if brew list zsh-autosuggestions &>/dev/null; then
+    if ! grep -q "zsh-autosuggestions" ~/.zshrc; then
       echo "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+    else
+      echo "zsh-autosuggestions already sourced in .zshrc."
+    fi
+  else
+    echo "zsh-autosuggestions is not installed. Skipping."
   fi
 
-
-  if ! grep -q "zsh-syntax-highlighting" ~/.zshrc; then
+  if brew list zsh-syntax-highlighting &>/dev/null; then
+    if ! grep -q "zsh-syntax-highlighting" ~/.zshrc; then
       echo "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+    else
+      echo "zsh-syntax-highlighting already sourced in .zshrc."
+    fi
+  else
+    echo "zsh-syntax-highlighting is not installed. Skipping."
   fi
 fi
