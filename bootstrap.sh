@@ -8,6 +8,8 @@ ALLOWED_SIGNERS_FILE=~/.ssh/allowed_signers
 RUBY_VERSION="3.1.4"
 RBENV_INIT_LINE="rbenv()"
 ZSHRC="$HOME/.zshrc"
+VSCODE_SETTINGS_PATH="$HOME/Library/Application Support/Code/User/settings.json"
+VS_CODE_SETTINGS_FILE="./vscode-settings.json"
 
 confirm_step() {
   while true; do
@@ -119,28 +121,30 @@ if confirm_step "Would you like to configure git?"; then
     git config --global credential.helper osxkeychain
     git config --global pull.rebase true
     git config --global core.excludesfile "$GIT_IGNORE_GLOBAL"
-    echo "# Operating System specific ignores" >> "$GIT_IGNORE_GLOBAL"
-    echo ".DS_Store" >> "$GIT_IGNORE_GLOBAL"
-    echo "*.swp" >> "$GIT_IGNORE_GLOBAL"
-    echo "*.swo" >> "$GIT_IGNORE_GLOBAL"
-    echo "# Editor and IDE specific ignores" >> "$GIT_IGNORE_GLOBAL"
-    echo ".vscode/" >> "$GIT_IGNORE_GLOBAL"
-    echo ".idea/" >> "$GIT_IGNORE_GLOBAL"
-    echo "*.sublime-workspace" >> "$GIT_IGNORE_GLOBAL"
-    echo "# Language and Framework specific ignores" >> "$GIT_IGNORE_GLOBAL"
-    echo "__pycache__/" >> "$GIT_IGNORE_GLOBAL"
-    echo "*.py[cod]" >> "$GIT_IGNORE_GLOBAL"
-    echo "node_modules/" >> "$GIT_IGNORE_GLOBAL"
-    echo "*.class" >> "$GIT_IGNORE_GLOBAL"
-    echo "# Build and Dependency folders" >> "$GIT_IGNORE_GLOBAL"
-    echo "/build/" >> "$GIT_IGNORE_GLOBAL"
-    echo "/dist/" >> "$GIT_IGNORE_GLOBAL"
-    echo "target/" >> "$GIT_IGNORE_GLOBAL"
-    echo "# Temporary files" >> "$GIT_IGNORE_GLOBAL"
-    echo "*.log" >> "$GIT_IGNORE_GLOBAL"
-    echo "*.tmp" >> "$GIT_IGNORE_GLOBAL"
-    echo "# Environment files" >> "$GIT_IGNORE_GLOBAL"
-    echo ".env" >> "$GIT_IGNORE_GLOBAL"
+    {
+      echo "# Operating System specific ignores"
+      echo ".DS_Store"
+      echo "*.swp"
+      echo "*.swo"
+      echo "# Editor and IDE specific ignores"
+      echo ".vscode/"
+      echo ".idea/"
+      echo "*.sublime-workspace"
+      echo "# Language and Framework specific ignores"
+      echo "__pycache__/"
+      echo "*.py[cod]"
+      echo "node_modules/"
+      echo "*.class"
+      echo "# Build and Dependency folders"
+      echo "/build/"
+      echo "/dist/"
+      echo "target/"
+      echo "# Temporary files"
+      echo "*.log"
+      echo "*.tmp"
+      echo "# Environment files"
+      echo ".env"
+    } >> "$GIT_IGNORE_GLOBAL"
   fi
 
   echo ""
@@ -168,7 +172,7 @@ if confirm_step "Would you like to configure git?"; then
       git config --global gpg.format ssh
       git config --global gpg.ssh.program "$ssh_program"
       git config --global commit.gpgsign true
-      
+
       touch "$ALLOWED_SIGNERS_FILE"
       echo "$git_email $ssh_key_id" >> "$ALLOWED_SIGNERS_FILE"
       git config --global gpg.ssh.allowedSignersFile "$ALLOWED_SIGNERS_FILE"
@@ -207,4 +211,9 @@ fi
 echo ""
 if confirm_step "Open Docker Desktop and configure docker?"; then
   open -a Docker
+fi
+
+echo ""
+if confirm_step "Copy vscode-settings.json to $VSCODE_SETTINGS_PATH?"; then
+  cp $VS_CODE_SETTINGS_FILE "$VSCODE_SETTINGS_PATH"
 fi
