@@ -233,3 +233,15 @@ echo ""
 if confirm_step "Copy vscode-settings.json to $VSCODE_SETTINGS_PATH?"; then
   cp $VS_CODE_SETTINGS_FILE "$VSCODE_SETTINGS_PATH"
 fi
+
+echo ""
+if confirm_step "Enable ZSH autosuggestions and syntax highlighting?"; then
+  if ! grep -q "zsh-autosuggestions" ~/.zshrc; then
+      echo "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+  fi
+
+
+  if ! grep -q "zsh-syntax-highlighting" ~/.zshrc; then
+      echo "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+  fi
+fi

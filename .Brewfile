@@ -22,6 +22,8 @@ brew "imagemagick"
 brew "ldns"
 brew "nmap"
 brew "htop"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
 
 cask "transmission"
 cask "visual-studio-code"
