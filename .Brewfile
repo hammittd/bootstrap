@@ -24,6 +24,7 @@ brew "nmap"
 brew "htop"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
+brew "watch"
 
 cask "transmission"
 cask "visual-studio-code"
