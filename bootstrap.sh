@@ -187,6 +187,17 @@ if confirm_step "Would you like to configure git?"; then
       echo "Invalid choice. Skipping commit signing configuration."
       ;;
   esac
+
+  echo ""
+  echo "The following git configuration will be saved:"
+  cat "$GIT_CONFIG_FILE"
+  echo ""
+  if confirm_step "Do you want to keep this configuration?"; then
+    echo "Saved git configuration."
+  else
+    mv "$backup_file" "$GIT_CONFIG_FILE"
+    echo "Restored git configuration backup."
+  fi
 fi
 
 echo ""
