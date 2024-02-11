@@ -219,6 +219,7 @@ fi
 echo ""
 if confirm_step "Install nvm and the latest LTS version of NodeJS?"; then
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  # shellcheck source=/dev/null
   source "$ZSHRC"
   nvm install --lts
   nvm use --lts
