@@ -3,6 +3,8 @@ Script to install tools and do some setup.
 
 [Inspired by this starter file](https://github.com/joeyhoer/starter/blob/master/installers/homebrew/Brewfile)
 
+Check the `.Brewfile` to see what's installed
+
 ## Get started
 Run `./bootstrap.sh` to get started.
 
