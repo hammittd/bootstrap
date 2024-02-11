@@ -24,6 +24,7 @@ cask "vlc"
 cask "docker"
 cask "mullvadvpn"
 cask "postico"
+cask "1password"
 
 # get installed with
 # `brew bundle dump --file=- | grep ^mas`
