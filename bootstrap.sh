@@ -210,10 +210,15 @@ if confirm_step "Add eval \"\$(rbenv init - zsh)\" to $ZSHRC?"; then
 fi
 
 echo ""
-if confirm_step "Install ruby v$RUBY_VERSION and bundler?"; then
-  rbenv install "$RUBY_VERSION"
-  rbenv global $RUBY_VERSION
-  gem install bundler
+if rbenv versions | grep -q "$RUBY_VERSION"; then
+    echo "Ruby version $RUBY_VERSION is already installed."
+else
+  if confirm_step "Install ruby v$RUBY_VERSION and bundler?"; then
+    rbenv install "$RUBY_VERSION"
+    rbenv global $RUBY_VERSION
+    gem install bundler
+    rbenv rehash
+  fi
 fi
 
 echo ""
