@@ -25,6 +25,7 @@ cask "docker"
 cask "mullvadvpn"
 cask "postico"
 cask "1password"
+cask "1password-cli"
 
 # get installed with
 # `brew bundle dump --file=- | grep ^mas`
