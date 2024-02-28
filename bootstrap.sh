@@ -13,6 +13,8 @@ VSCODE_APPLICATION_PATH="/Applications/Visual Studio Code.app/Contents/Resources
 VSCODE_SYMLINK_PATH="/usr/local/bin/code"
 VSCODE_SETTINGS_FILE="./vscode-settings.json"
 VSCODE_EXTENSIONS_FILE="./vscode-extensions.txt"
+JAVASCRIPT_SNIPPETS_FILE="./javascript-snippets.json"
+VSCODE_JAVASCRIPT_SNIPPETS_PATH="$HOME/Library/Application Support/Code/User/snippets/javascript.json"
 BERKELEY_MONO_TYPEFACES_DIR="./berkeley-mono-typeface"
 USER_FONTS_DIR="$HOME/Library/Fonts"
 
@@ -269,11 +271,12 @@ if [ -f "$VSCODE_APPLICATION_PATH" ]; then
     ln -s "$VSCODE_APPLICATION_PATH" "$VSCODE_SYMLINK_PATH"
     echo "Symlink created: $VSCODE_SYMLINK_PATH -> $VSCODE_APPLICATION_PATH"
   fi
-  if confirm_step "Configure vs code with vscode-settings.json and vscode-extensions.txt?"; then
+  if confirm_step "Configure vs code with vscode-settings.json, vscode-extensions.txt, and javascript-snippets.json?"; then
     cp $VSCODE_SETTINGS_FILE "$VSCODE_SETTINGS_PATH"
     while IFS= read -r line; do
       code --force --install-extension "$line"
     done < "$VSCODE_EXTENSIONS_FILE"
+    cp "$JAVASCRIPT_SNIPPETS_FILE" "$VSCODE_JAVASCRIPT_SNIPPETS_PATH"
   fi
 else
   echo "vs code is not installed."

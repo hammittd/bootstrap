@@ -1,0 +1,24 @@
+{
+	"Filter Unique": {
+		"prefix": ["unique", "filter-unique"],
+		"body": [
+			"function onlyUnique(element, index, array) {", "\treturn array.indexOf(element) === index;", "}"
+		],
+		"description": "Filter the unique elements in an array."
+	},
+	"Slice Into Chunks": {
+		"prefix": ["chunks"],
+		"body": [
+			"function sliceIntoChunks(array, size) {",
+			"\tif (size <= 0) {",
+			"\t\tthrow new Error('size must be greater than 0');",
+			"\t}",
+			"\tif (array.length === 0) {",
+			"\t\treturn [];",
+			"\t}",
+			"\treturn [array.slice(0, size)].concat(sliceIntoChunks(array.slice(size), size));",
+			"}"
+		],
+		"description": "Slice an array into chunks"
+	}
+}
