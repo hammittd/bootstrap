@@ -1,3 +1,2 @@
-github.github-vscode-theme
 timonwong.shellcheck
 ms-azuretools.vscode-docker
