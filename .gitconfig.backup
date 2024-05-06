@@ -1,0 +1,30 @@
+[user]
+	name = hammittd
+	email = derekrhammitt@gmail.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICarToNTMrk2HqQ3a7f1mjFdwg8lw5OlI5MAbNHyOa0h
+[init]
+	defaultBranch = main
+[core]
+	editor = code --wait
+	excludesfile = /Users/hammittd/.gitignore_global
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	sw = switch
+[help]
+	autocorrect = 1
+[push]
+	default = current
+[credential]
+	helper = osxkeychain
+[pull]
+	rebase = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+	allowedSignersFile = /Users/hammittd/.ssh/allowed_signers
+[commit]
+	gpgsign = true
