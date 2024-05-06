@@ -35,9 +35,11 @@ To install Berkeley Mono fonts, `cp ./berkeley-mono-typeface/*.ttf $HOME/Library
 
 To enable `zsh-autosuggestions`, `echo "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc`
 
-To enable `zsh-syntax-highlighting`, `echo "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc` 
+To enable `zsh-syntax-highlighting`, `echo "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc`
 
 To set up VS Code settings, `cp ./vscode-settings.json "$HOME/Library/Application Support/Code/User/settings.json"`
+
+To speed up key repeats, `defaults write NSGlobalDomain KeyRepeat -int 1`
 
 ## Afterward
 ### postgres
