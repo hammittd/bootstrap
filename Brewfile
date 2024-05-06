@@ -36,6 +36,7 @@ cask "mullvadvpn"
 cask "postico"
 cask "1password"
 cask "1password-cli"
+cask "steam"
 
 # get installed with
 # `brew bundle dump --file=- | grep ^mas`
