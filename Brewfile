@@ -16,7 +16,6 @@ brew "tmux"
 brew "wget"
 brew "rbenv"
 brew "ruby-build"
-brew "postgresql@14"
 brew "ffmpeg"
 brew "imagemagick"
 brew "ldns"
@@ -37,6 +36,7 @@ cask "postico"
 cask "1password"
 cask "1password-cli"
 cask "steam"
+cask "google-chrome"
 
 # get installed with
 # `brew bundle dump --file=- | grep ^mas`
