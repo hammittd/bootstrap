@@ -43,7 +43,9 @@ To speed up key repeats, `defaults write NSGlobalDomain KeyRepeat -int 1`
 
 ## Afterward
 ### postgres
-- If you started the db service, connect to postgres with `psql postgres`
+- Install Postgres.app, visit: https://postgresapp.com/downloads.html
+- `sudo mkdir -p /etc/paths.d && echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp`
+  - https://postgresapp.com/documentation/cli-tools.html
 ### VS Code
 - Add `code` to path in VS Code
 ### Terminal.app
