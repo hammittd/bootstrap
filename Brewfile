@@ -37,6 +37,7 @@ cask "1password"
 cask "1password-cli"
 cask "steam"
 cask "google-chrome"
+cask "chatgpt"
 
 # get installed with
 # `brew bundle dump --file=- | grep ^mas`
