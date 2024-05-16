@@ -26,6 +26,8 @@ brew "zsh-syntax-highlighting"
 brew "watch"
 brew "tldr"
 brew "httpie"
+brew "terraform"
+brew "awscli"
 
 cask "transmission"
 cask "visual-studio-code"
