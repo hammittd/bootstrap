@@ -1,5 +1,6 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
+tap "railwaycat/emacsmacport"
 
 brew "coreutils"
 brew "fd"
@@ -28,6 +29,8 @@ brew "tldr"
 brew "httpie"
 brew "terraform"
 brew "awscli"
+brew "cmake"
+brew "graphviz"
 
 cask "transmission"
 cask "visual-studio-code"
