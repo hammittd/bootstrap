@@ -41,6 +41,8 @@ To set up VS Code settings, `cp ./vscode-settings.json "$HOME/Library/Applicatio
 
 To speed up key repeats, `defaults write NSGlobalDomain KeyRepeat -int 1`
 
+Copy `.editorconfig` to `~/.editorconfig`, `cp .editorconfig "$HOME/.editorconfig"`
+
 ## Afterward
 ### postgres
 - Install Postgres.app, visit: https://postgresapp.com/downloads.html
