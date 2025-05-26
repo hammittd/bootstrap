@@ -27,8 +27,6 @@ Run `rbenv init` and follow instructions. Run `rbenv install 3.3.1` and `rbenv g
 
 To install `nvm` and `nodejs`: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash`, follow the instructions to use `nvm`, and run `nvm install --lts` and `nvm use --lts`
 
-To start `postgres` server, `brew services start postgresql`
-
 Run and configure docker with `open -a Docker`
 
 To install Berkeley Mono fonts, `cp ./berkeley-mono-typeface/*.ttf $HOME/Library/Fonts` and `cp ./berkeley-mono-typeface/*.otf $HOME/Library/Fonts`
