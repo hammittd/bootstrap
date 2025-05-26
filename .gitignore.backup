@@ -1,16 +1,24 @@
+# Terraform
+*.tfstate
+.terraform/
+.terraform.lock.hcl
+
 # Operating System specific ignores
 .DS_Store
 *.swp
 *.swo
+
 # Editor and IDE specific ignores
 .vscode/
 .idea/
 *.sublime-workspace
+
 # Language and Framework specific ignores
 __pycache__/
 *.py[cod]
 node_modules/
 *.class
+
 # Build and Dependency folders
 /build/
 /dist/

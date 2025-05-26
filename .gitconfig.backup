@@ -6,7 +6,7 @@
 	defaultBranch = main
 [core]
 	editor = code --wait
-	excludesfile = /Users/hammittd/.gitignore_global
+	excludesfile = /Users/hammittd/.gitignore
 [merge]
 	tool = code
 [mergetool "code"]

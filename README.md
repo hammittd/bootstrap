@@ -21,7 +21,7 @@ To install everything in the `.Brewfile`, run: `brew bundle --file ./.Brewfile`.
 
 To set up shell integrations for fzf, run: `$(brew --prefix)/opt/fzf/install --all`.
 
-To set up global `git` config, `cp ./.gitconfig.backup ~/.gitconfig` and `cp ./.gitignore_global.backup ~/.gitignore_global`.
+To set up global `git` config, `cp ./.gitconfig.backup ~/.gitconfig` and `cp ./.gitignore.backup ~/.gitignore`.
 
 Run `rbenv init` and follow instructions. Run `rbenv install 3.3.1` and `rbenv global 3.3.1`. Ensure you're using the right version of `ruby` and `gem` (e.g., `gem env home` should print user home directory). Then run `gem install bundler`.
 
